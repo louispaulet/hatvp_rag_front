@@ -31,6 +31,9 @@ function App() {
         </div>
       )}
       <ResponseDisplay response={response} />
+	  <h2> Wondering who is in the dataset? </h2>
+	  <p> You might not find what you are looking for. </p>
+	  <p> Check to see if that person is included in the current version.</p>
       <NameList /> {/* Include the NameList component */}
     </div>
   );

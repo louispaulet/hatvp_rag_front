@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { FixedSizeList as List } from 'react-window';
+import './App.css'; // Import the CSS file for styling
 
 const filterNames = (names, query) => {
   if (!query) {
@@ -29,25 +30,26 @@ const NameList = () => {
   const filteredNames = useMemo(() => filterNames(names, searchTerm), [names, searchTerm]);
 
   const Row = ({ index, style }) => (
-    <div style={style}>
+    <div style={style} className="name-row">
       {filteredNames[index]}
     </div>
   );
 
   return (
-    <div>
+    <div className="name-list-container">
       <input
         type="text"
         placeholder="Search names..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ marginBottom: '10px', padding: '8px', width: '300px' }}
+        className="search-input"
       />
       <List
-        height={400}
+        height={500}
         itemCount={filteredNames.length}
         itemSize={35}
-        width={300}
+        width={600}
+        className="name-list"
       >
         {Row}
       </List>
