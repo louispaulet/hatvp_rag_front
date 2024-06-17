@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-function QuestionForm({ onResponse }) {
+function QuestionForm({ onResponse, setLoading }) {
   const [question, setQuestion] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch('http://127.0.0.1:5000/ask', {
         method: 'POST',
