@@ -19,7 +19,8 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>HATVP RAG ASSISTANT</h1>
+      <h1>HATVP ASSISTANT 🧐</h1>
+	  <em> Made with RAG (Retrieval Augmented Generation). </em>
       <p>Please wait a few seconds for the answer.</p>
       <QuestionForm onResponse={handleResponse} setLoading={handleLoading} />
       {loading && (
