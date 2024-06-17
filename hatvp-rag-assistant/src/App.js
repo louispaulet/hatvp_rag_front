@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import QuestionForm from './QuestionForm';
 import ResponseDisplay from './ResponseDisplay';
-import {ThreeDots} from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import './App.css';
+import NameList from './filterNameList'; // Import the NameList component
 
 function App() {
   const [response, setResponse] = useState('');
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="app-container">
       <h1>HATVP ASSISTANT 🧐</h1>
-	  <em> Made with RAG (Retrieval Augmented Generation). </em>
+      <em> Made with RAG (Retrieval Augmented Generation). </em>
       <p>Please wait a few seconds for the answer.</p>
       <QuestionForm onResponse={handleResponse} setLoading={handleLoading} />
       {loading && (
@@ -30,6 +31,7 @@ function App() {
         </div>
       )}
       <ResponseDisplay response={response} />
+      <NameList /> {/* Include the NameList component */}
     </div>
   );
 }
