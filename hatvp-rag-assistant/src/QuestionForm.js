@@ -5,15 +5,23 @@ function QuestionForm({ onResponse }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://127.0.0.1:5000/ask', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ question }),
-    });
-    const data = await response.json();
-    onResponse(data);
+    try {
+      const response = await fetch('http://127.0.0.1:5000/ask', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question }),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      onResponse(data.answer);  // Accessing the 'answer' property from the response
+    } catch (error) {
+      console.error('Failed to fetch:', error);
+      onResponse('An error occurred while fetching the response.');
+    }
   };
 
   return (

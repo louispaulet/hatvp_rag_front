@@ -1,3 +1,10 @@
+
+# ignore notepad++ temp files  
+*.bak
+*.gitignore.bak
+
+# typical reactjs gitignore config
+
 .DS_STORE
 node_modules
 scripts/flow/*/.flowconfig
