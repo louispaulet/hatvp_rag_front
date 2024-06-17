@@ -1,8 +1,9 @@
-version: '3'
-
 services:
   frontend:
-    build: .
+    build:
+        context: .
+        args:
+            REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}
     ports:
       - "3000:80"
     restart: always
