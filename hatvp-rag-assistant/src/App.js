@@ -6,7 +6,7 @@ import './App.css';
 import NameList from './filterNameList'; // Import the NameList component
 
 function App() {
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState({ answer: '', declaration_id: [] });
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState('');
 

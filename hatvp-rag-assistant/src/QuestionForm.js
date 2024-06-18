@@ -31,18 +31,18 @@ function QuestionForm({ onResponse, setLoading }) {
         }
         
         const data = await response.json();
-        onResponse(data.answer); // Accessing the 'answer' property from the response
+        onResponse(data); // Pass the entire response object
       } catch (error) {
         if (error.name === 'AbortError') {
           console.error('Fetch aborted due to timeout');
-          onResponse('Request timed out. Please try again.');
+          onResponse({ answer: 'Request timed out. Please try again.', declaration_id: [] });
           setLoading(false);
         } else if (error.message.includes('Failed to fetch') || error.message.includes('ERR_CONNECTION_REFUSED')) {
           console.error('Failed to fetch due to connection issue:', error);
           setTimeout(() => fetchQuestion(true), 5000); // Retry after 5 seconds
         } else {
           console.error('Failed to fetch:', error);
-          onResponse('An error occurred while fetching the response.');
+          onResponse({ answer: 'An error occurred while fetching the response.', declaration_id: [] });
           setLoading(false);
         }
       }
